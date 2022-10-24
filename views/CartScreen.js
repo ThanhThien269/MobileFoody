@@ -5,7 +5,7 @@ const FindScreen = ({
     params,
 }) => (
     <View>
-        <Text>componentName</Text>
+        <Text>Cart</Text>
     </View>
 );
 

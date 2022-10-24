@@ -28,7 +28,7 @@ products:[
         totalPrice:'50.000-200.000',
         icon:'cafe-outline'
 
-    }
+    },
 ],
 currentProduct:{}
 }
