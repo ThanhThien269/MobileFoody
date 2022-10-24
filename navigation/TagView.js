@@ -8,6 +8,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Home from '../views/Home'
+import Login from '../views/Login'
 import Category from '../views/Category';
 import CartScreen from '../views/CartScreen'
 
@@ -18,11 +19,14 @@ import Food from '../views/Food'
 import DetailsProfile from '../views/DetailsProfile';
 import LikeScreen from '../views/LikeScreen';
 import Introduce from '../views/Introduce';
+import Register from '../views/Register';
 
 function HomeStack(){
     const Stack = createNativeStackNavigator();
     return(
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator>
+            <Stack.Screen name="Login" component={Login}/>
+            <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="Category" component={Category}/>
             <Stack.Screen name="CartScreen" component={CartScreen}/>
