@@ -21,22 +21,24 @@ import LikeScreen from '../views/LikeScreen';
 import Introduce from '../views/Introduce';
 import Register from '../views/Register';
 
+const navOptionHandler = () => ({
+    headerShown: false
+})
+
 function HomeStack(){
     const Stack = createNativeStackNavigator();
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login}/>
-            <Stack.Screen name="Register" component={Register}/>
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Category" component={Category}/>
-            <Stack.Screen name="CartScreen" component={CartScreen}/>
-            <Stack.Screen name="NotifyScreen" component={NotifyScreen}/>
-            <Stack.Screen name="ChatScreen" component={ChatScreen}/>
-            <Stack.Screen name="Profile" component={Profile}/>
-            <Stack.Screen name="Food" component={Food}/>
-            <Stack.Screen name="DetailsProfile" component={DetailsProfile}/>
-            <Stack.Screen name="LikeScreen" component={LikeScreen}/>
-            <Stack.Screen name="Introduce" component={Introduce}/>
+            <Stack.Screen name="Home" component={Home} options={navOptionHandler}/>
+            <Stack.Screen name="Category" component={Category} options={navOptionHandler}/>
+            <Stack.Screen name="CartScreen" component={CartScreen} options={navOptionHandler}/>
+            <Stack.Screen name="NotifyScreen" component={NotifyScreen} options={navOptionHandler}/>
+            <Stack.Screen name="ChatScreen" component={ChatScreen} options={navOptionHandler}/>
+            <Stack.Screen name="Profile" component={Profile} options={navOptionHandler}/>
+            <Stack.Screen name="Food" component={Food} options={navOptionHandler}/>
+            <Stack.Screen name="DetailsProfile" component={DetailsProfile} options={navOptionHandler}/>
+            <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler}/>
+            <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler}/>
         </Stack.Navigator>
     )
 }
@@ -54,18 +56,22 @@ function HomeDrawer(){
           drawerActiveBackgroundColor: '#6a0080'
         }}
         >
-        <Drawer.Screen name="Home" component={Home} optiosn={ {title:"Home",
+        <Drawer.Screen name="Home" component={HomeTab} optiosn={ {title:"Home",
             drawerIcon: ({size}) => <Ionicons name='home-outline' color='#FFF' size={size}/> }}/>  
-        <Drawer.Screen name="Introduce" component={Introduce} optiosn={ {title:"Introduce",
+        <Drawer.Screen name="Login" component={Login} optiosn={ {title:"Login",
+            drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>
+        <Drawer.Screen name="Register" component={Register} optiosn={ {title:"Register",
             drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>  
-      </Drawer.Navigator>
+        <Drawer.Screen name="Introduce" component={Introduce} optiosn={ {title:"Introduce",
+            drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>
+        </Drawer.Navigator>
     )
 }
 
-export default function TagView(){
+function HomeTab(){
     const Tab=createBottomTabNavigator();
-    return(
-            <Tab.Navigator  screenOptions={{
+    return (
+        <Tab.Navigator  screenOptions={{
             tabBarShowLabel:false,
             headerShown: false,
             tabBarStyle: {
@@ -80,20 +86,13 @@ export default function TagView(){
             ...styles.shadow
             }
             }} >
-            <Tab.Screen  name="HomeStack" component={HomeStack} options={{
+            <Tab.Screen  name="Home" component={Home} options={{
                 tabBarIcon:({focused})=>(
                     <View style={styles.iconView}>
                         <Ionicons  name='home-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />
                     </View>
                 )
             }} />
-            {/* <Tab.Screen  name="HomeDrawer" component={HomeDrawer} options={{
-                tabBarIcon:({focused})=>(
-                    <View style={styles.iconView}>
-                        <Ionicons  name='home-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />
-                    </View>
-                )
-            }} /> */}
             <Tab.Screen name="Category" component={Category} options={{
                  tabBarIcon:({focused})=>(
                      <View style={styles.iconView}>
@@ -101,20 +100,6 @@ export default function TagView(){
                     </View>
                  )
             }}/>
-            {/* <Tab.Screen name="Cart" component={CartScreen} options={{
-                 tabBarIcon:({focused})=>(
-                     <View style={styles.iconView}>
-                         <Ionicons  name='cart-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />     
-                     </View>
-                 )
-            }}/> */}
-            {/* <Tab.Screen name="Notify" component={NotifyScreen} options={{
-                 tabBarIcon:({focused})=>(
-                     <View style={styles.iconView}>
-                         <Ionicons  name='notifications-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}}  />       
-                     </View>
-                 )
-             }}/> */}
             <Tab.Screen name="Chat" component={ChatScreen} options={{
                  tabBarIcon:({focused})=>(
                      <View style={styles.iconView}>
@@ -129,7 +114,25 @@ export default function TagView(){
                      </View>
                  )
             }}/>
-            </Tab.Navigator>
+        </Tab.Navigator>
+    )
+}
+
+export default function TagView(){
+    const Stack = createNativeStackNavigator();
+    return(
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeDrawer} options={navOptionHandler}/>
+            <Stack.Screen name="Category" component={Category} options={navOptionHandler}/>
+            <Stack.Screen name="CartScreen" component={CartScreen} options={navOptionHandler}/>
+            <Stack.Screen name="NotifyScreen" component={NotifyScreen} options={navOptionHandler}/>
+            <Stack.Screen name="ChatScreen" component={ChatScreen} options={navOptionHandler}/>
+            <Stack.Screen name="Profile" component={Profile} options={navOptionHandler}/>
+            <Stack.Screen name="Food" component={Food} options={navOptionHandler}/>
+            <Stack.Screen name="DetailsProfile" component={DetailsProfile} options={navOptionHandler}/>
+            <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler}/>
+            <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler}/>
+        </Stack.Navigator>
     )
 }
     

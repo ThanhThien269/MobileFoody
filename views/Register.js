@@ -61,16 +61,14 @@ const Register = ({
                     
                     <View style={styles.inputContainer}>
                         <TextInput placeholder='Địa chỉ' style={styles.inputText}/>
-                        </View>
+                    </View>
                     <View style={styles.inputContainer}>
                         <TextInput placeholder='Số điện thoại' style={styles.inputText}/>
                     </View>
                     
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("ListItems")}>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Login")}>
                         <Text style={styles.btnTxt} >Đăng ký</Text>
                     </TouchableOpacity>
-                    
-                    
                 </View>
             </ImageBackground>
         </View>
@@ -136,7 +134,6 @@ const styles = StyleSheet.create({
     bgContainer: {
         flex: 1,
         alignItems: 'center',
-
     },
     txtForgot : {
         marginTop: 20,

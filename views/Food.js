@@ -1,15 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-const Food = ({
-    params,
-}) => (
-    <View>
-        <Text>Food</Text>
-    </View>
-);
+const Food = ({navigation,}) => {
+    return(
+        <View style={styles.container}>
+            <TouchableOpacity onPress={() => {navigation.goBack()}}>Go back</TouchableOpacity>
+            <Text>Food</Text>
+        </View>
+    );
+}
 
 export default Food;
 const styles = StyleSheet.create({
-    
+    container: {
+        flex:1
+    }
 });

@@ -40,8 +40,6 @@ const Home = ({ navigation }) => {
                 </View>
                 </LinearGradient>
                 <Text style={{ textTransform: 'uppercase', fontWeight: '500', fontSize: 20, marginLeft: 25, textAlign: 'center' }}>menu</Text>
-                
-               
             </View>
         )
     }
@@ -68,7 +66,6 @@ const Home = ({ navigation }) => {
         </View>
     )
 }
-
 
 export default Home;
 
