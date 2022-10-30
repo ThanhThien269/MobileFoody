@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import Home from '../views/Customer/HomeCustomer'
+import HomeCustomer from '../views/Customer/HomeCustomer'
 import Login from '../views/Customer/Login'
 import Category from '../views/Customer/Category';
 import CartScreen from '../views/Customer/CartScreen'
@@ -28,7 +28,7 @@ const navOptionHandler = () => ({
 function HomeDrawer(){
     const Drawer = createDrawerNavigator();
     return(
-        <Drawer.Navigator initialRouteName="Home"
+        <Drawer.Navigator initialRouteName="HomeCustomer"
         screenOptions={{
           drawerStyle: {backgroundColor: '#9c27b0'},
           drawerLabelStyle: {color: '#FFF'},
@@ -38,7 +38,7 @@ function HomeDrawer(){
           drawerActiveBackgroundColor: '#6a0080'
         }}
         >
-        <Drawer.Screen name="Home" component={HomeTab} optiosn={ {title:"Home",
+        <Drawer.Screen name="HomeCustomer" component={HomeTab} optiosn={ {title:"Home",
             drawerIcon: ({size}) => <Ionicons name='home-outline' color='#FFF' size={size}/> }}/>  
         <Drawer.Screen name="Login" component={Login} optiosn={ {title:"Login",
             drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>
@@ -68,7 +68,7 @@ function HomeTab(){
             ...styles.shadow
             }
             }} >
-            <Tab.Screen  name="Home" component={Home} options={{
+            <Tab.Screen  name="HomeCustomer" component={HomeCustomer} options={{
                 tabBarIcon:({focused})=>(
                     <View style={styles.iconView}>
                         <Ionicons  name='home-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />
@@ -104,7 +104,7 @@ export default function TagView(){
     const Stack = createNativeStackNavigator();
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeDrawer} options={navOptionHandler}/>
+            <Stack.Screen name="HomeCustomer" component={HomeDrawer} options={navOptionHandler}/>
             <Stack.Screen name="Category" component={Category} options={navOptionHandler}/>
             <Stack.Screen name="CartScreen" component={CartScreen} options={navOptionHandler}/>
             <Stack.Screen name="NotifyScreen" component={NotifyScreen} options={navOptionHandler}/>
