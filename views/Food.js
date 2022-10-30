@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import {Image, ImageBackground, StyleSheet, Text, View,TouchableOpacity, Modal,Pressable } from 'react-native';
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 import { Dimensions } from 'react-native';
@@ -36,7 +36,7 @@ const items = [
         img: 'https://thumbs.dreamstime.com/b/black-burger-black-background-cheeseburger-recipes-fast-food-black-burger-black-background-cheeseburger-recipes-fast-171114034.jpg',
         price: "50.000",
         cateId: 2,
-        mota:'Món Việt Nam ai cũng thích'
+        mota:'Món Việt Nam ai cũng thích aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     },
     {
         id: 8,
@@ -89,18 +89,59 @@ const Food = ({
     const {productImg} =route.params;
     const {productName} =route.params;
     const [id,setId]=useState(productId);
-    const [img,setImg]=useState('');
+    const [showModal,setShowModal]=useState(false);
     const MainComponent = ({ item }) => {
         return (
             item.cateId == id ? 
                 <View style={styles.mainContent}>
-                    <TouchableOpacity  style={styles.mainContainer} >
+                    <TouchableOpacity  style={styles.mainContainer} onPress={()=>setShowModal(true)} >
                         <Image source={{uri: item.img}} style={styles.foodImg} />
                         <Text style={{fontWeight:'700',fontSize:16}}>{item.name} </Text>
                         <View style={styles.btnPrice}>
                         <Text style={{textAlign:'center',fontSize:16}}>{item.price} VND</Text>
                         </View>
+                        <Modal
+                            transparent={true}
+                            visible={showModal}
+                            animationType={'fade'}
+                            onRequestClose={()=>setShowModal(false)}>
+                             <Pressable onPress={(evt)=>evt.target==evt.currentTarget ? setShowModal(false):setShowModal(true)} style={styles.modalContainer}>
+                                 <View style={styles.modalContent}> 
                         
+                                    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%'}}>
+                             
+                                    <View style={styles.imgContainer}>
+                                        <Image style={styles.img} key={item.id} source={{uri: item.img} }/>
+                                        <Text style={styles.txtF}>{item.name}    </Text>    
+                                        <Text style={{flexWrap:'wrap',padding:5}}>{item.mota}</Text>                       
+                                    </View>
+                                     </View>
+                                 </View>
+                            <View style={{flexDirection:'row',top:-50,justifyContent:'space-between',width:'90%'}}>
+                                <View style={{justifyContent:'space-between',width:'40%',flexDirection:'row'}}>
+                                    <TouchableOpacity style={styles.btn}>
+                                        <Ionicons
+                                        name='add-outline'
+                                        size={15}
+                                        color='#fff'>  
+                                        </Ionicons>
+                                    </TouchableOpacity>
+                                    <Text style={{justifyContent:'center',alignSelf:'center'}}>1</Text>
+                                    <TouchableOpacity style={styles.btn}>
+                                        <Ionicons
+                                            name='remove-outline'
+                                            size={15}
+                                            color='#fff'>  
+                                        </Ionicons>
+                                    </TouchableOpacity>
+                                </View>
+                                <TouchableOpacity style={styles.cartBtn}>
+                                    <Text style={{color:'#fff'}}>Add to cart</Text>
+                                </TouchableOpacity>
+                            </View>
+                       
+                </Pressable>
+            </Modal>
                         
                    
                     </TouchableOpacity>
@@ -136,10 +177,11 @@ const Food = ({
             <FlatList 
             keyExtractor={item=>item.id.toString()}
             numColumns={2}
-                data={items}
-                renderItem={MainComponent}>
+            data={items}
+            renderItem={MainComponent}>
                 
             </FlatList>
+           
         </View>
         
        
@@ -217,5 +259,61 @@ const styles = StyleSheet.create({
         marginLeft:25,
         backgroundColor:'#414146',
         opacity:0.8
+    },
+    modalContainer:{
+        width:'100%',
+        height:'93%',
+        backgroundColor:'rgba(1,1,1,0.5)',
+        paddingTop:'40%'
+
+    },
+    modalContent:{
+        width:'100%',
+        height:'100%',
+        alignItems:'center',
+        backgroundColor:'#fff',
+        borderRadius:15,
+        borderBottomEndRadius:0,
+        borderBottomStartRadius:0
+    },
+    img: {
+        width: '100%',
+        height: '100%',
+        borderRadius:15,
+        borderBottomEndRadius:0,
+        borderBottomStartRadius:0
+    },
+    imgContainer: {
+        width: '100%',
+        height: 250,
+      
+    },
+    titleContent:{
+        alignSelf:'center'     ,
+        justifyContent:'center',
+        textAlign:'center',
+        
+    },
+    txtF:{
+        padding:5,
+        fontSize:16,
+        fontWeight:'700'
+    },
+    btn:{
+        width:40,
+        height:40,
+        borderRadius:20,
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:'#414146',
+        opacity:0.8
+    },
+    cartBtn:{
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:'#000',
+        borderRadius:20,
+        width:'60%',
+        marginLeft:30
     }
 });
