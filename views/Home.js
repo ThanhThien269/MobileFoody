@@ -48,7 +48,7 @@ const Home = ({ navigation }) => {
     const MainComponent = ({ item }) => {
         return (
             <View style={styles.mainContent}>
-                <TouchableOpacity key={item.id} style={styles.mainContainer}  onPress={() => {navigation.navigate('Food')}}>
+                <TouchableOpacity key={item.id} style={styles.mainContainer}  onPress={() => {navigation.navigate('Food',{productId:item.id,productImg:item.img,productName:item.name})}}>
                     <Image source={{ uri: item.img }} style={styles.thumbnail} />
                     <View style={styles.gametxt}>
                         <Text style={styles.cateTitle}>{item.name} </Text>

@@ -22,7 +22,9 @@ import Introduce from '../views/Introduce';
 function HomeStack(){
     const Stack = createNativeStackNavigator();
     return(
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Home"
+        screenOptions={{
+            headerShown: false,}}>
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="Category" component={Category}/>
             <Stack.Screen name="CartScreen" component={CartScreen}/>
@@ -42,6 +44,7 @@ function HomeDrawer(){
     return(
         <Drawer.Navigator initialRouteName="Home"
         screenOptions={{
+          headerShown: false,
           drawerStyle: {backgroundColor: '#9c27b0'},
           drawerLabelStyle: {color: '#FFF'},
           headerStyle: { backgroundColor: '#9c27b0'},

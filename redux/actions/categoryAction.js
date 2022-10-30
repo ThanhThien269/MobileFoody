@@ -8,8 +8,8 @@ export const createProduct = (product) => {
         payload: {
             productId: product.id,
             productName: product.name,
-            productLogo: product.logo,
-            productThumbnail: product.thumbnail,
+            productTotalPrice: product.totalPrice,
+            productImg: product.img,
         }
     }
 }
