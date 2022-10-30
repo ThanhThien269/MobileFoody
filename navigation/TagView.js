@@ -7,41 +7,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import Home from '../views/Home'
-import Login from '../views/Login'
-import Category from '../views/Category';
-import CartScreen from '../views/CartScreen'
+import Home from '../views/Customer/HomeCustomer'
+import Login from '../views/Customer/Login'
+import Category from '../views/Customer/Category';
+import CartScreen from '../views/Customer/CartScreen'
 
-import NotifyScreen from '../views/NotifyScreen'
-import ChatScreen from '../views/ChatScreen'
-import Profile from '../views/Profile';
-import Food from '../views/Food'
-import DetailsProfile from '../views/DetailsProfile';
-import LikeScreen from '../views/LikeScreen';
-import Introduce from '../views/Introduce';
-import Register from '../views/Register';
+import NotifyScreen from '../views/Customer/NotifyScreen'
+import ChatScreen from '../views/Customer/ChatScreen'
+import Profile from '../views/Customer/Profile';
+import Food from '../views/Customer/Food'
+import DetailsProfile from '../views/Customer/DetailsProfile';
+import LikeScreen from '../views/Customer/LikeScreen';
+import Introduce from '../views/Customer/Introduce';
+import Register from '../views/Customer/Register';
 
 const navOptionHandler = () => ({
     headerShown: false
 })
-
-function HomeStack(){
-    const Stack = createNativeStackNavigator();
-    return(
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={navOptionHandler}/>
-            <Stack.Screen name="Category" component={Category} options={navOptionHandler}/>
-            <Stack.Screen name="CartScreen" component={CartScreen} options={navOptionHandler}/>
-            <Stack.Screen name="NotifyScreen" component={NotifyScreen} options={navOptionHandler}/>
-            <Stack.Screen name="ChatScreen" component={ChatScreen} options={navOptionHandler}/>
-            <Stack.Screen name="Profile" component={Profile} options={navOptionHandler}/>
-            <Stack.Screen name="Food" component={Food} options={navOptionHandler}/>
-            <Stack.Screen name="DetailsProfile" component={DetailsProfile} options={navOptionHandler}/>
-            <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler}/>
-            <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler}/>
-        </Stack.Navigator>
-    )
-}
 
 function HomeDrawer(){
     const Drawer = createDrawerNavigator();
