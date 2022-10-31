@@ -10,7 +10,7 @@ const delayExecution = (mls) => {
         setTimeout(() => resolve("ok"), mls);
     });
 };
-const Home = ({ navigation }) => {
+const HomeCustomer = ({ navigation }) => {
     const dbp = useSelector((state) => state.products);
     const HeaderComponent = () => {
         return (
@@ -40,8 +40,6 @@ const Home = ({ navigation }) => {
                 </View>
                 </LinearGradient>
                 <Text style={{ textTransform: 'uppercase', fontWeight: '500', fontSize: 20, marginLeft: 25, textAlign: 'center' }}>menu</Text>
-                
-               
             </View>
         )
     }
@@ -69,8 +67,7 @@ const Home = ({ navigation }) => {
     )
 }
 
-
-export default Home;
+export default HomeCustomer;
 
 const styles = StyleSheet.create({
     HomeContainer: {
